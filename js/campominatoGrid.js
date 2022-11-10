@@ -1,4 +1,20 @@
+//animazione di entrata 
+
+const myTimeout=setTimeout(closeVideo,3300);
+
+function closeVideo(){
+    const boxAnimationEl= document.querySelector(".box-animazione");
+    boxAnimationEl.classList.add("d-none");
+
+}
+
+
+
+
+//--------------------------------------------------------------
 const btnGeneraGridEl = document.querySelector("#genera-grid");
+
+
 let contatoreScelteGiuste=0;
 let bombsList;
 let numSquare;

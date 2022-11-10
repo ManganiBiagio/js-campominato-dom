@@ -1,3 +1,16 @@
+.box-animazione{
+    position: absolute;
+    z-index: 10;
+    
+    
+}
+.background-video{
+    object-fit: contain;
+    width: 100%;
+
+    
+}
+
 .my-container{
     width: 40%;
     margin:0 auto;
