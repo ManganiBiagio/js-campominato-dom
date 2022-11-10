@@ -7,15 +7,17 @@ generaGrid();
 btnGeneraGridEl.addEventListener("click", generaGrid)
 
 function generaGrid(){
+    const resulteEl=document.querySelector(".resulte");
     const selectNumSquareEl = document.querySelector("[name=numSquare]");
     const outputGridEl = document.querySelector(".my-grid-output");
     contatoreScelteGiuste=0;
+    resulteEl.classList.add("d-none");
     
     
 
 
     numSquare=(parseInt(selectNumSquareEl.value)) ;
-    const numRiga=Math.sqrt(numSquare,2)
+    const numRiga=Math.sqrt(numSquare,2);
     outputGridEl.innerHTML="";
 
     bombsList=bombGenerator(numSquare);
@@ -37,7 +39,7 @@ function generaGrid(){
 function onNewCell(){
    
     if(bombsList.includes(+this.dataset.Index)){
-        console.log("sei esploso");
+        
         this.classList.toggle("bg-danger")
         finePartita("hai perso",contatoreScelteGiuste);
     }
@@ -80,8 +82,12 @@ function bombGenerator(numSquare){
 
 
 function finePartita(txt,numPunteggio){
-    txt=`${txt} il tuo punteggio è di ${numPunteggio}`
-    alert(txt);
+    const resulteEl=document.querySelector(".resulte");
+    txt=`${txt} il tuo punteggio è di ${numPunteggio}`;
+    resulteEl.innerHTML=txt;
+    resulteEl.classList.remove("d-none");
+    
+    
 
     const square=document.querySelectorAll(".my-square");
     square.forEach(function(i){
