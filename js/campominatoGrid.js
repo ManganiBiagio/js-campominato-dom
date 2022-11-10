@@ -35,6 +35,7 @@ function generaGrid(){
 }
 
 function onNewCell(){
+   
     if(bombsList.includes(+this.dataset.Index)){
         console.log("sei esploso");
         this.classList.toggle("bg-danger")
@@ -85,7 +86,7 @@ function finePartita(txt,numPunteggio){
     const square=document.querySelectorAll(".my-square");
     square.forEach(function(i){
         if(bombsList.includes(+i.dataset.Index)){
-            i.classList.add("bg-danger")
+            i.classList.add("bg-danger");
             
         }
         else{
@@ -93,7 +94,7 @@ function finePartita(txt,numPunteggio){
     
         }
         
-        i.removeEventListener("click",onNewCell)
+        i.removeEventListener("click",onNewCell);
     })
     
 
