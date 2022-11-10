@@ -1,0 +1,30 @@
+.my-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.box-img{
+    height: 40px;
+    aspect-ratio: 1 / 1;
+    margin-right: 1rem;
+    
+}
+
+.my-grid{
+    display: flex;
+    flex-wrap: wrap;
+}
+.my-square{
+    
+    border: 1px solid black;
+    aspect-ratio: 1 / 1;
+
+}
+
+.active-square{
+    background-color:var(--bs-blue);
+}
+
+.green{
+    background-color: #7fffd4;
+}
