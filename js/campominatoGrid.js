@@ -1,4 +1,7 @@
 const btnGeneraGridEl = document.querySelector("#genera-grid");
+let contatoreScelteGiuste=0;
+let bombsList;
+let numSquare;
 generaGrid();
 
 btnGeneraGridEl.addEventListener("click", generaGrid)
@@ -6,15 +9,16 @@ btnGeneraGridEl.addEventListener("click", generaGrid)
 function generaGrid(){
     const selectNumSquareEl = document.querySelector("[name=numSquare]");
     const outputGridEl = document.querySelector(".my-grid-output");
-    let contatoreScelteGiuste=0;
+    contatoreScelteGiuste=0;
+    
     
 
 
-    const numSquare=(parseInt(selectNumSquareEl.value)) ;
+    numSquare=(parseInt(selectNumSquareEl.value)) ;
     const numRiga=Math.sqrt(numSquare,2)
     outputGridEl.innerHTML="";
 
-    const bombsList=bombGenerator(numSquare);
+    bombsList=bombGenerator(numSquare);
     console.log(bombsList);
     
     for(let i=0;i<numSquare;i++){
@@ -24,32 +28,26 @@ function generaGrid(){
         newCell.innerHTML=i+1;
         newCell.dataset.Index=i+1;
 
-        newCell.addEventListener("click",function(){
-            if(bombsList.includes(+this.dataset.Index)){
-                console.log("sei esploso");
-                this.classList.toggle("bg-danger")
-                finePartita("hai perso",contatoreScelteGiuste);
-            }
-            else{
-                this.classList.add("active-square");
-                contatoreScelteGiuste++;
-                console.log(this.innerHTML);
-                console.log(contatoreScelteGiuste);
-                if(contatoreScelteGiuste===(numSquare-16)){
-                    finePartita("hai vinto",contatoreScelteGiuste);
-                }
-
-            }
-            
-            
-            
-        })
+        newCell.addEventListener("click",onNewCell)
         outputGridEl.append(newCell);
     }
 
 }
 
-function onNewCell(contatoreScelteGiuste){
+function onNewCell(){
+    if(bombsList.includes(+this.dataset.Index)){
+        console.log("sei esploso");
+        this.classList.toggle("bg-danger")
+        finePartita("hai perso",contatoreScelteGiuste);
+    }
+    else{
+        this.classList.add("active-square");
+        contatoreScelteGiuste++;
+        if(contatoreScelteGiuste===(numSquare-16)){
+            finePartita("hai vinto",contatoreScelteGiuste);
+        }
+
+    }
     
 }
 
@@ -87,7 +85,11 @@ function finePartita(txt,numPunteggio){
 
     const square=document.querySelectorAll(".my-square");
     console.log(square);
-    square[0].removeEventListener("click", function(){});
+    square.forEach(function(i){
+        i.removeEventListener("click",onNewCell)
+        
+        
+    })
     
 
 
