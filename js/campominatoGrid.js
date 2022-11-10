@@ -25,7 +25,7 @@ function generaGrid(){
         const newCell=document.createElement("div");
         newCell.classList.add("my-square");
         newCell.style.width=`calc(100% / ${numRiga})`;
-        newCell.innerHTML=i+1;
+        
         newCell.dataset.Index=i+1;
 
         newCell.addEventListener("click",onNewCell)
