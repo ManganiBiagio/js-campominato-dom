@@ -79,16 +79,21 @@ function bombGenerator(numSquare){
 
 
 function finePartita(txt,numPunteggio){
-    const outputGridEl = document.querySelector(".my-grid-output");
     txt=`${txt} il tuo punteggio è di ${numPunteggio}`
     alert(txt);
 
     const square=document.querySelectorAll(".my-square");
-    console.log(square);
     square.forEach(function(i){
+        if(bombsList.includes(+i.dataset.Index)){
+            i.classList.add("bg-danger")
+            
+        }
+        else{
+            i.classList.add("active-square");
+    
+        }
+        
         i.removeEventListener("click",onNewCell)
-        
-        
     })
     
 
