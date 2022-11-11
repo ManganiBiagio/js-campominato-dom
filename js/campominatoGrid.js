@@ -1,6 +1,6 @@
 //animazione di entrata 
 
-const myTimeout=setTimeout(closeVideo,3300);
+const myTimeout=setTimeout(closeVideo,7000);
 
 function closeVideo(){
     const boxAnimationEl= document.querySelector(".box-animazione");
